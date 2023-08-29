@@ -1,0 +1,14 @@
+﻿@foreach (var modelExplorer in ViewData.ModelExplorer.Properties.Where(pm => pm.Metadata.ShowForEdit))
+{
+    var propertyname = modelExplorer.Metadata.Name;
+    <div class="">
+        <div class="form-group">
+            @Html.Label(propertyname, modelExplorer.Metadata.DisplayName, new {@class = "control-label mr-2"})
+            <div class="">
+                    @Html.Editor(propertyname, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessage(propertyname, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+    </div>
+}
