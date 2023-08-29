@@ -1,0 +1,2 @@
+# SIC
+Simple Internal Configurator
