@@ -1,5 +1,4 @@
-﻿using LaMa.SIC.Core.Routing;
-using Microsoft.Extensions.FileProviders;
+﻿using LaMa.SIC.Core.Controllers;
 
 namespace LaMa.SIC.Web.Configuration
 {
@@ -7,7 +6,7 @@ namespace LaMa.SIC.Web.Configuration
     {
         public static void ConfigureSICViews(this IServiceCollection services)
         {
-            var assembly = typeof(IRouteProvider).Assembly;
+            var assembly = typeof(SICController).Assembly;
             services.AddControllersWithViews().AddApplicationPart(assembly);
         }
     }
