@@ -1,17 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
-using LaMa.SIC.Core.Controllers;
+﻿using LaMa.SIC.Core.Controllers;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LaMa.SIC.Web.Controllers
+namespace LaMa.SIC.Web.Features.Person
 {
-    public class TestController : SICController
+    public class PersonController : SICController
     {
-        [HttpGet]
         public IActionResult Index()
         {
             var person = new Person
             {
                 Id = 1,
+                Name = "Jean",
                 Addresses = new List<Address>()
             };
 
@@ -30,45 +29,25 @@ namespace LaMa.SIC.Web.Controllers
 
             return SICView(person, "person");
         }
-
-        [HttpPost]
-        public IActionResult Index(Person person)
-        {
-            if (ModelState.IsValid) return SICView(person, "person");
-
-            return SICView(person, "person");
-        }
     }
 
 
     public class Person
     {
-        [HiddenInput(DisplayValue = false)] public int Id { get; set; }
-
-        [Required]
-        [Display(Name = "First name")]
+        public int Id { get; set; }
         public string Name { get; set; }
-
-        [Display(Name = "Date of birth")] public DateTime DateOfBirth { get; set; }
-
-        [Display(Name = "Date of birth")] public DateTimeOffset DateOfBirthOffset { get; set; }
-
-        [DataType(DataType.MultilineText)] public string Description { get; set; }
-
-        [Display(Name = "Addresses")] public List<Address> Addresses { get; set; }
+        public List<Address> Addresses { get; set; }
     }
 
     public class Address
     {
-        [HiddenInput(DisplayValue = false)] public int Id { get; set; }
-
+        public int Id { get; set; }
         public string Street { get; set; }
         public string City { get; set; }
         public string State { get; set; }
         public string PostalCode { get; set; }
         public string Country { get; set; }
         public string ZipCode { get; set; }
-
-        [Display(Name = "Is domicile")] public bool IsDomicile { get; set; }
+        public bool IsDomicile { get; set; }
     }
 }

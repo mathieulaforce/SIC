@@ -1,9 +1,9 @@
-using LaMa.SIC.Web.Configuration;
+using LaMa.SIC.Core.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.ConfigureSICViews();
+builder.Services.ConfigureSIC();
 
 var app = builder.Build();
 
@@ -23,7 +23,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    "default",
+    "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
