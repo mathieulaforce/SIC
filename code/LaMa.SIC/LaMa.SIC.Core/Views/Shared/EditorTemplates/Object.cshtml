@@ -1,41 +1,41 @@
 ﻿@using System.Collections
 @foreach (var modelExplorer in ViewData.ModelExplorer.Properties.Where(pm => pm.Metadata.ShowForEdit))
 {
-        <div class="form-group my-2">
-            @if (modelExplorer.Metadata == null)
-            {
-            }
-            else if (IsControlWithCustomLabelPlacement(modelExplorer))
-            {
+    <div class="form-group my-2">
+        @if (modelExplorer.Metadata == null)
+        {
+        }
+        else if (IsControlWithCustomLabelPlacement(modelExplorer))
+        {
+            @Html.Editor(modelExplorer.Metadata.Name)
+        }
+        else if (IsEnumerableControl(modelExplorer))
+        {
+            @Html.Label(modelExplorer.Metadata.Name, modelExplorer.Metadata.DisplayName, new {@class = "control-label mr-2", @for = modelExplorer.Metadata.PropertyName})
+            <div class="ms-2">
                 @Html.Editor(modelExplorer.Metadata.Name)
-            }
-            else if (IsEnumerableControl(modelExplorer))
-            {
-                @Html.Label(modelExplorer.Metadata.Name, modelExplorer.Metadata.DisplayName, new {@class = "control-label mr-2", @for = modelExplorer.Metadata.PropertyName})
-                <div class="ms-2">
-                    @Html.Editor(modelExplorer.Metadata.Name)
-                </div>
-            }
-            else if (modelExplorer.Metadata.HideSurroundingHtml)
-            {
-                @Html.Editor(modelExplorer.Metadata.Name)
-            }
-            else
-            {
-                @Html.Label(modelExplorer.Metadata.Name, modelExplorer.Metadata.DisplayName, new {@class = "control-label mr-2", @for = modelExplorer.Metadata.PropertyName})
-                <div class="">
-                    @Html.Editor(modelExplorer.Metadata.Name, new
+            </div>
+        }
+        else if (modelExplorer.Metadata.HideSurroundingHtml)
+        {
+            @Html.Editor(modelExplorer.Metadata.Name)
+        }
+        else
+        {
+            @Html.Label(modelExplorer.Metadata.Name, modelExplorer.Metadata.DisplayName, new {@class = "control-label mr-2", @for = modelExplorer.Metadata.PropertyName})
+            <div class="">
+                @Html.Editor(modelExplorer.Metadata.Name, new
+                {
+                    htmlAttributes = new
                     {
-                        htmlAttributes = new
-                        {
-                            @class = "form-control"
-                        }
-                    })
-                    @Html.ValidationMessage(modelExplorer.Metadata.Name)
-                </div>
-            }
+                        @class = "form-control"
+                    }
+                })
+                @Html.ValidationMessage(modelExplorer.Metadata.Name)
+            </div>
+        }
 
-        </div>
+    </div>
 }
 
 

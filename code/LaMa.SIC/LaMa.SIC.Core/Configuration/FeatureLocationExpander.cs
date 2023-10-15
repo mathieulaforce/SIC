@@ -8,9 +8,10 @@ namespace LaMa.SIC.Core.Configuration
         {
         }
 
-        public IEnumerable<string> ExpandViewLocations(ViewLocationExpanderContext context, IEnumerable<string> viewLocations)
+        public IEnumerable<string> ExpandViewLocations(ViewLocationExpanderContext context,
+            IEnumerable<string> viewLocations)
         {
-            var featureViewLocation = new string[] { "/Features/{1}/{0}.cshtml", "/Features/Shared/{0}.cshtml" };
+            var featureViewLocation = new[] {"/Features/{1}/{0}.cshtml", "/Features/Shared/{0}.cshtml"};
             return featureViewLocation.Concat(viewLocations);
         }
     }

@@ -5,13 +5,8 @@ namespace LaMa.SIC.Web.Features.Person
 {
     public class PersonController : SICController
     {
-        public PersonController()
-        {
-        }
-
         public IActionResult Index()
         {
-
             var person = new Person
             {
                 Id = 1,
@@ -20,19 +15,17 @@ namespace LaMa.SIC.Web.Features.Person
             };
 
             foreach (var i1 in Enumerable.Range(1, 5))
-            {
                 person.Addresses.Add(new Address
                 {
                     Id = i1,
                     IsDomicile = i1 == 1,
                     City = $"City{i1}",
                     Country = $"Country{i1}",
-                    PostalCode =$"PostalCode{i1}" ,
-                    State =$"State{i1}" ,
-                    Street =$"Street{i1}" ,
-                    ZipCode =$"ZipCode{i1}"
+                    PostalCode = $"PostalCode{i1}",
+                    State = $"State{i1}",
+                    Street = $"Street{i1}",
+                    ZipCode = $"ZipCode{i1}"
                 });
-            }
 
             return SICView(person, "person");
         }

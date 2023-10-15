@@ -5,6 +5,6 @@
 
 <div class="form-check form-check-inline form-switch">
     @Html.Label(propertyName, ViewData.ModelMetadata.DisplayName, new {@class = "form-check-label form-label"})
-    @Html.CheckBox(propertyName, new {@class="form-check-input",  role="switch"})
+    @Html.CheckBox(propertyName, new {@class = "form-check-input", role = "switch"})
     @Html.ValidationMessage(propertyName, new {@class = "text-danger"})
 </div>
