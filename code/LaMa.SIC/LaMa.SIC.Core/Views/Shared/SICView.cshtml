@@ -1,5 +1,10 @@
 ﻿@model SICModel
 <div>
-    <h1>@Model.Title</h1>
+    <form method="post">
+        <h1>@Model.Title</h1>
+        @Html.ValidationSummary()
+        <button type="submit">save</button>
     @Html.EditorFor(m => m.Model)
+    <button type="submit">save</button>
+    </form>
 </div>

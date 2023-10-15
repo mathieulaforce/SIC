@@ -1,9 +1,9 @@
-using LaMa.SIC.Web.Configuration;
+using LaMa.SIC.Core.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.ConfigureSICViews();
+builder.Services.ConfigureSIC();
 
 var app = builder.Build();
 
